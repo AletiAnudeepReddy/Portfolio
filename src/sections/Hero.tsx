@@ -16,8 +16,8 @@ export const HeroSection = () => {
             backgroundImage: `url(${grainImage.src})`,
           }}
         ></div>
-        <div className="hero-ring size-[620px]"></div>
-        <div className="hero-ring size-[820px]"></div>
+        <div className="hero-ring size-[520px] md:size-[620px]"></div>
+        <div className="hero-ring size-[720px] md:size-[820px]"></div>
         <div className="hero-ring size-[1020px]"></div>
         <div className="hero-ring size-[1220px]"></div>
         <HeroOrbit size={800} rotation={-72}>
