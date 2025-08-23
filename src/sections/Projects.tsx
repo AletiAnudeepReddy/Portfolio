@@ -95,7 +95,7 @@ export const ProjectsSection = () => {
                   <hr className="border-t-2 border-white/5 md:mt-5 mt-4" />
                   <ul className="flex flex-col mt-4 gap-4 md:mt-5">
                     {project.results.map((result) => (
-                      <li className="flex gap-2 text-sm md:text-base text-white/50">
+                      <li key={result.title} className="flex gap-2 text-sm md:text-base text-white/50">
                         <CheckCircleIcon className="size-4 md:size-6" />
                         <span>{result.title}</span>
                       </li>
