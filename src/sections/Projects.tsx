@@ -6,6 +6,7 @@ import Image from "next/image";
 import { CheckCircleIcon } from "lucide-react";
 import { ArrowUpRightIcon } from "lucide-react";
 import grainImage from "@/assets/images/grain.jpg";
+import { Card } from "@/components/Card";
 
 const portfolioProjects = [
   {
@@ -62,15 +63,14 @@ export const ProjectsSection = () => {
         <p className="text-center text-white/60 md:text-lg lg:text-xl max-w-md mx-auto mt-4">
           See how I transformed concepts into engaging digital experiences.
         </p>
-        <div className="flex flex-col gap-20 md:mt-20 mt-10">
-          {portfolioProjects.map((project) => (
-            <div
+        <div className="space-y-20 md:mt-20 mt-10 relative">
+          {portfolioProjects.map((project, projectIndex) => (
+            <Card
               key={project.title}
-              className="bg-gray-800 rounded-3xl relative overflow-hidden 
-    after:block after:content-[''] after:absolute after:inset-0 
-    after:rounded-3xl after:border-2 after:border-white/30 
-    after:pointer-events-none after:z-20 px-8 pt-8 md:pt-12 md:px-10
-    lg:px-20 lg:pt-16"
+              className="px-8 pt-8 md:pt-12 md:px-10 pb-0 lg:px-20 lg:pt-16 sticky"
+              style={{
+                top: `calc(64px + ${projectIndex * 40}px)`, // ✅ note the space before +
+              }}
             >
               <div
                 className="absolute inset-0 -z-10 opacity-5"
@@ -95,7 +95,10 @@ export const ProjectsSection = () => {
                   <hr className="border-t-2 border-white/5 md:mt-5 mt-4" />
                   <ul className="flex flex-col mt-4 gap-4 md:mt-5">
                     {project.results.map((result) => (
-                      <li key={result.title} className="flex gap-2 text-sm md:text-base text-white/50">
+                      <li
+                        key={result.title}
+                        className="flex gap-2 text-sm md:text-base text-white/50"
+                      >
                         <CheckCircleIcon className="size-4 md:size-6" />
                         <span>{result.title}</span>
                       </li>
@@ -120,7 +123,7 @@ export const ProjectsSection = () => {
                   />
                 </div>
               </div>
-            </div>
+            </Card>
           ))}
         </div>
       </div>
