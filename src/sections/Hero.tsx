@@ -1,3 +1,5 @@
+"use client";
+import { useState } from "react";
 import memojiImage from "@/assets/images/memoji-computer.png";
 import Image from "next/image";
 import ArrowDown from "@/assets/icons/arrow-down.svg";
@@ -5,8 +7,10 @@ import grainImage from "@/assets/images/grain.jpg";
 import StarIcon from "@/assets/icons/star.svg";
 import { HeroOrbit } from "@/components/HeroOrbit";
 import SparkleIcon from "@/assets/icons/sparkle.svg";
+import { ConnectPopup } from "@/components/ConnectPopup";
 
 export const HeroSection = () => {
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
   return (
     <div className="py-32 md:py-40 lg:py-48 relative z-0 overflow-x-clip">
       <div className="absolute inset-0 [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_70%,transparent)]">
@@ -120,16 +124,29 @@ export const HeroSection = () => {
           </p>
         </div>
         <div className="flex flex-col md:flex-row justify-center items-center gap-4 mt-8">
-          <button className="inline-flex items-center gap-2 border border-white/15 px-6 h-12 rounded-xl">
+          <a
+            href="/resume.pdf"
+            download="Anudeep-Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex z-10 hover:scale-105 transition duration-300 hover:bg-white/10 items-center gap-2 border border-white/15 px-6 h-12 rounded-xl"
+          >
             <span className="font-semibold">Explore My Work</span>
             <ArrowDown className="size-4" />
-          </button>
-          <button className="inline-flex items-center gap-2 border border-white text-gray-900 bg-white h-12 px-6 rounded-xl">
+          </a>
+          <button
+            onClick={() => setIsPopupOpen(true)}
+            className="inline-flex z-10 hover:scale-105 transition duration-300 hover:bg-white/70 items-center gap-2 border border-white text-gray-900 bg-white h-12 px-6 rounded-xl"
+          >
             <span>👋</span>
             <span className="font-semibold">Lets Connect</span>
           </button>
         </div>
       </div>
+      <ConnectPopup
+        isOpen={isPopupOpen}
+        onClose={() => setIsPopupOpen(false)}
+      />
     </div>
   );
 };

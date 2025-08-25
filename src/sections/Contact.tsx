@@ -1,7 +1,11 @@
+"use client";
+import { useState } from "react";
 import { ArrowUpRightIcon } from "lucide-react";
 import grainImage from "@/assets/images/grain.jpg";
+import { ConnectPopup } from "@/components/ConnectPopup";
 
 export const ContactSection = () => {
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
   return (
     <div className="py-16 pt-12 lg:py-24 lg:pt-16">
       <div className="container">
@@ -28,7 +32,8 @@ export const ContactSection = () => {
             </div>
             <div>
               <button
-                className="text-white bg-gray-900 inline-flex items-center px-6
+                onClick={() => setIsPopupOpen(true)}
+                className="text-white hover:scale-105 transition duration-300 bg-gray-900 inline-flex items-center px-6
               h-12 rounded-xl gap-2 w-max border border-gray-900"
               >
                 <span className="font-semibold">Contact Me</span>
@@ -38,6 +43,10 @@ export const ContactSection = () => {
           </div>
         </div>
       </div>
+      <ConnectPopup
+        isOpen={isPopupOpen}
+        onClose={() => setIsPopupOpen(false)}
+      />
     </div>
   );
 };
