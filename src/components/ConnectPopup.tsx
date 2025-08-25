@@ -62,7 +62,7 @@ export const ConnectPopup: React.FC<ConnectPopupProps> = ({
             exit={{ opacity: 0, scale: 0.9, y: 40 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
           >
-            <Card className="w-[90%] max-w-lg p-8 m-6 relative shadow-2xl shadow-emerald-500/20">
+            <Card className="w-[90%] max-w-sm md:max-w-lg mx-auto p-8 relative shadow-2xl shadow-emerald-500/20">
               {/* Close Button */}
               <motion.button
                 whileHover={{ rotate: 90, scale: 1.1 }}
@@ -81,6 +81,12 @@ export const ConnectPopup: React.FC<ConnectPopupProps> = ({
                   transition={{ delay: 0.1 }}
                   className="flex items-center justify-center gap-2 text-2xl md:text-3xl font-serif mb-4"
                 >
+                  <motion.span
+                    animate={{ rotate: [0, 15, -15, 0] }}
+                    transition={{ repeat: Infinity, duration: 2 }}
+                  >
+                    <StarIcon className="text-emerald-400 size-10" />
+                  </motion.span>
                   Let’s Connect{" "}
                   <motion.span
                     animate={{ rotate: [0, 15, -15, 0] }}

@@ -2,15 +2,15 @@ import { ArrowUpRightIcon } from "lucide-react";
 const footerLinks = [
   {
     title: "LinkedIn",
-    href: "#",
+    href: "https://www.linkedin.com/in/anudeep-reddy-aleti-879816292/",
   },
   {
     title: "GitHub",
-    href: "#",
+    href: "https://github.com/AletiAnudeepReddy",
   },
   {
     title: "LeetCode",
-    href: "#",
+    href: "https://leetcode.com/u/anudeep_reddie_/",
   },
   {
     title: "Instagram",
@@ -31,7 +31,8 @@ export const Footer = () => {
           <nav className="flex flex-col md:flex-row items-center gap-7">
             {footerLinks.map((link) => (
               <a
-                href=""
+                target="_blank"
+                href={link.href}
                 key={link.title}
                 className="inline-flex items-center gap-1.5 hover:scale-105 transition duration-300 hover:text-emerald-300"
               >

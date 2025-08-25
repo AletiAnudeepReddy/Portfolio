@@ -47,10 +47,9 @@ export const TestimonialsSection = () => {
     <div className="py-16">
       <div className="container">
         <SectionHeader
-          eyebrow="Happy Clients"
-          title="What Clients Say about Me"
-          description="Dont just take my word for it. See what my clients have to say about my
-        work."
+          eyebrow="Certifications & Achievements"
+          title="My Learning Journey & Recognitions"
+          description="Here are some of the certifications and achievements I have earned through my courses, projects, and training programs. Each reflects my dedication to learning and building expertise."
         />
         <div
           className="mt-16 lg:mt-20 flex overflow-x-clip 
