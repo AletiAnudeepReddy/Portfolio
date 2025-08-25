@@ -2,7 +2,7 @@
 import { X, Sparkles, Mail, MessageSquareText } from "lucide-react";
 import StarIcon from "@/assets/icons/star.svg";
 import { Card } from "@/components/Card";
-import React from "react";
+import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface ConnectPopupProps {
@@ -14,6 +14,39 @@ export const ConnectPopup: React.FC<ConnectPopupProps> = ({
   isOpen,
   onClose,
 }) => {
+  const [isProcessing, setIsProcessing] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    const email = formData.get("email") as string;
+    const message = formData.get("message") as string;
+
+    setIsProcessing(true); // start processing
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        body: JSON.stringify({ email, message }),
+        headers: { "Content-Type": "application/json" },
+      });
+
+      const data = await res.json();
+      if (res.ok) {
+        alert("Message sent successfully!");
+        form.reset(); // clears the form
+      } else {
+        alert("Error: " + data.error);
+      }
+    } catch (err) {
+      alert("Something went wrong!");
+      console.error(err);
+    } finally {
+      setIsProcessing(false); // stop processing
+    }
+  };
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -23,7 +56,6 @@ export const ConnectPopup: React.FC<ConnectPopupProps> = ({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
         >
-          {/* Popup Card */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9, y: 40 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -68,10 +100,7 @@ export const ConnectPopup: React.FC<ConnectPopupProps> = ({
 
                 {/* Form */}
                 <motion.form
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                    alert("Submitted! (Hook this to backend/email service)");
-                  }}
+                  onSubmit={handleSubmit}
                   className="flex flex-col gap-4"
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -82,6 +111,7 @@ export const ConnectPopup: React.FC<ConnectPopupProps> = ({
                     <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-white/40 size-5" />
                     <input
                       type="email"
+                      name="email"
                       placeholder="Enter your email"
                       required
                       className="w-full pl-10 pr-4 py-3 rounded-xl bg-white/5 border border-white/20 text-white placeholder-white/40 focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400 outline-none transition-all"
@@ -92,6 +122,7 @@ export const ConnectPopup: React.FC<ConnectPopupProps> = ({
                   <motion.div className="relative" whileFocus={{ scale: 1.02 }}>
                     <MessageSquareText className="absolute left-3 top-3 text-white/40 size-5" />
                     <textarea
+                      name="message"
                       placeholder="Your message (optional)"
                       className="w-full pl-10 pr-4 py-3 rounded-xl bg-white/5 border border-white/20 text-white placeholder-white/40 focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400 outline-none resize-none transition-all"
                       rows={3}
@@ -105,7 +136,7 @@ export const ConnectPopup: React.FC<ConnectPopupProps> = ({
                     whileTap={{ scale: 0.95 }}
                     className="bg-gradient-to-r from-emerald-400 to-teal-400 hover:from-emerald-500 hover:to-teal-500 text-gray-900 font-semibold py-3 rounded-xl shadow-lg shadow-emerald-500/20 transition"
                   >
-                    Submit
+                    {isProcessing ? "Processing..." : "Submit"}
                   </motion.button>
                 </motion.form>
               </div>

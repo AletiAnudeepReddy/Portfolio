@@ -7,7 +7,7 @@ import { ConnectPopup } from "@/components/ConnectPopup";
 export const ContactSection = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   return (
-    <div className="py-16 pt-12 lg:py-24 lg:pt-16">
+    <div id="contact" className="py-16 pt-12 lg:py-24 lg:pt-16">
       <div className="container">
         <div
           className="bg-gradient-to-r from-emerald-300 to-sky-400 z-0
