@@ -11,7 +11,7 @@ export const ContactSection = () => {
       <div className="container">
         <div
           className="bg-gradient-to-r from-emerald-300 to-sky-400 z-0
-         text-gray-900 py-8 px-10 rounded-3xl text-center md:text-left
+         text-gray-900 py-8 px-10 lg:px-14 lg:py-11 rounded-3xl text-center md:text-left
           relative overflow-hidden"
         >
           <div
@@ -20,7 +20,7 @@ export const ContactSection = () => {
               backgroundImage: `url(${grainImage.src})`,
             }}
           ></div>
-          <div className="flex flex-col md:flex-row gap-8 md:gap-16 items-center">
+          <div className="flex flex-col md:flex-row gap-8 md:gap-16 lg:gap-32 items-center">
             <div>
               <h2 className="font-serif text-2xl md:text-3xl">
                 Lets create something amazing together
