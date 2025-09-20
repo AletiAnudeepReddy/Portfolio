@@ -4,6 +4,9 @@ import aiStartupLandingPage from "@/assets/images/ai-startup-landing-page.png";
 import moodcanvas from "@/assets/images/moodcanvas.png";
 import feelify from "@/assets/images/feelify.png";
 import stylesense from "@/assets/images/stylesense.png";
+import validlyai from "@/assets/images/validlyai.png";
+import tripgenie from "@/assets/images/tripgenie.png";
+import agriconnect from "@/assets/images/agriconnect.png";
 import { Butterfly_Kids } from "next/font/google";
 import Image from "next/image";
 import { CheckCircleIcon } from "lucide-react";
@@ -13,37 +16,67 @@ import { Card } from "@/components/Card";
 
 const portfolioProjects = [
   {
-    company: "Acme Corp",
-    year: "2022",
-    title: "Dark Saas Landing Page",
+    tools: ["Next.js", "OpenAI API", "MongoDB", "Web Scraping"],
+    title: "ValidlyAI - Startup Idea Validator",
     results: [
-      { title: "Enhanced user experience by 40%" },
-      { title: "Improved site speed by 50%" },
-      { title: "Increased mobile traffic by 35%" },
+      { title: "AI-powered SWOT analysis" },
+      { title: "Competitor research with NLP" },
+      { title: "Market trend visualization with charts" },
     ],
-    link: "https://youtu.be/4k7IdSLxh6w",
+    link: "https://youtu.be/Z7I5uSRHMHg",
+    image: validlyai,
+  },
+  {
+    tools: ["Next.js", "React", "MongoDB", "OpenAI API", "Stability AI"],
+    title: "MoodCanvas - Mood Based Daily Wallpaper Generator",
+    results: [
+      { title: "Generates AI wallpapers based on your mood" },
+      { title: "Personalized daily quotes with images" },
+      { title: "User login with saved wallpaper history" },
+    ],
+    link: "https://youtu.be/your_moodcanvas_demo_link",
     image: moodcanvas,
   },
   {
-    company: "Innovative Co",
-    year: "2021",
-    title: "Light Saas Landing Page",
+    tools: ["Next.js", "TailwindCSS", "OpenAI API", "Google Maps API"],
+    title: "TripGenie - Smart Travel Itinerary Planner",
     results: [
-      { title: "Boosted sales by 20%" },
-      { title: "Expanded customer reach by 35%" },
-      { title: "Increased brand awareness by 15%" },
+      { title: "Generates custom travel plans with AI" },
+      { title: "Integrates maps for trip visualization" },
+      { title: "Suggests budget, routes, and activities" },
     ],
-    link: "https://youtu.be/7hi5zwO75yc",
+    link: "https://youtu.be/your_tripgenie_demo_link",
+    image: tripgenie,
+  },
+  {
+    tools: ["React", "Node.js", "MongoDB", "OpenAI API"],
+    title: "Feelify - Emotion Based Music & Content Recommender",
+    results: [
+      { title: "Analyzes emotions through user input" },
+      { title: "Recommends music, quotes, and content" },
+      { title: "Tracks mood history with analytics" },
+    ],
+    link: "https://youtu.be/your_feelify_demo_link",
     image: feelify,
   },
   {
-    company: "Quantum Dynamics",
-    year: "2023",
-    title: "AI Startup Landing Page",
+    tools: ["HTML&CSS", "Node.js", "Express", "MongoDB", "Sentiment Analysis"],
+    title: "AgriConnect - Farmer & Laborer Platform",
     results: [
-      { title: "Enhanced user experience by 40%" },
-      { title: "Improved site speed by 50%" },
-      { title: "Increased mobile traffic by 35%" },
+      { title: "Job posting and application system" },
+      { title: "Laborer ratings and sentiment analysis" },
+      { title: "Farmer dashboard with CRUD jobs" },
+    ],
+    link: "https://youtu.be/Z7I5uSRHMHg",
+    image: agriconnect,
+  },
+  {
+    tools: ["Next.js", "Tailwind CSS", "FastAPI", "PyTorch"],
+    title: "StyleSense - AI Fashion Recommendation",
+    results: [
+      { title: "Classifies fashion style using CNN" },
+      { title: "Fetches similar outfits via APIs" },
+      { title: "Explore page with branded product grids" },
     ],
     link: "https://youtu.be/Z7I5uSRHMHg",
     image: stylesense,
@@ -72,7 +105,7 @@ export const ProjectsSection = () => {
               key={project.title}
               className="px-8 pt-8 md:pt-12 md:px-10 pb-0 lg:px-20 lg:pt-16 sticky"
               style={{
-                top: `calc(64px + ${projectIndex * 40}px)`, // ✅ note the space before +
+                top: `calc(64px + ${projectIndex * 30}px)`, // ✅ note the space before +
               }}
             >
               <div
@@ -87,9 +120,14 @@ export const ProjectsSection = () => {
                     className="bg-gradient-to-r from-emerald-300 to-sky-400 inline-flex gap-2 font-bold uppercase
                 tracking-widest text-sm text-transparent bg-clip-text"
                   >
-                    <span>{project.company}</span>
-                    <span>&bull;</span>
-                    <span>{project.year}</span>
+                    {project.tools.map((tool, index) => (
+                      <span key={index}>
+                        {tool}
+                        {index < project.tools.length - 1 && (
+                          <span>&bull;</span>
+                        )}
+                      </span>
+                    ))}
                   </div>
 
                   <h3 className="font-serif text-2xl md:text-4xl md:mt-5 mt-2">
