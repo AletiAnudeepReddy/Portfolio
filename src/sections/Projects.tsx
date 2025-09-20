@@ -1,6 +1,9 @@
 import darkSaasLandingPage from "@/assets/images/dark-saas-landing-page.png";
 import lightSaasLandingPage from "@/assets/images/light-saas-landing-page.png";
 import aiStartupLandingPage from "@/assets/images/ai-startup-landing-page.png";
+import moodcanvas from "@/assets/images/moodcanvas.png";
+import feelify from "@/assets/images/feelify.png";
+import stylesense from "@/assets/images/stylesense.png";
 import { Butterfly_Kids } from "next/font/google";
 import Image from "next/image";
 import { CheckCircleIcon } from "lucide-react";
@@ -19,7 +22,7 @@ const portfolioProjects = [
       { title: "Increased mobile traffic by 35%" },
     ],
     link: "https://youtu.be/4k7IdSLxh6w",
-    image: darkSaasLandingPage,
+    image: moodcanvas,
   },
   {
     company: "Innovative Co",
@@ -31,7 +34,7 @@ const portfolioProjects = [
       { title: "Increased brand awareness by 15%" },
     ],
     link: "https://youtu.be/7hi5zwO75yc",
-    image: lightSaasLandingPage,
+    image: feelify,
   },
   {
     company: "Quantum Dynamics",
@@ -43,7 +46,7 @@ const portfolioProjects = [
       { title: "Increased mobile traffic by 35%" },
     ],
     link: "https://youtu.be/Z7I5uSRHMHg",
-    image: aiStartupLandingPage,
+    image: stylesense,
   },
 ];
 
@@ -118,8 +121,8 @@ export const ProjectsSection = () => {
                   <Image
                     src={project.image}
                     alt={project.title}
-                    className="mt-8 -mb-4 md:-mb-0 lg:mt-0 lg:absolute lg:h-full
-                    lg:w-auto lg:max-w-none"
+                    className="mt-8 -mb-4 md:-mb-0 lg:mt-0 border-2 border-white/15 lg:absolute lg:h-full
+                    lg:w-auto lg:max-w-none rounded-xl"
                   />
                 </div>
               </div>
